@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WJH Building &amp; Maintenance | Staffordshire &amp; Cheshire</title>
+<meta name="description" content="WJH Building and Maintenance — expert builders covering Stoke-on-Trent, Staffordshire and Cheshire. Extensions, kitchens, bathrooms, roofing, landscaping and more. Call Simon or Will for a free quote.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --slate: #1c1f26;
+  --slate-mid: #2a2e38;
+  --grey: #6b7280;
+  --grey-light: #e5e7eb;
+  --grey-pale: #f5f5f5;
+  --white: #ffffff;
+  --accent: #c8a96e;
+  --accent-dark: #b8954d;
+  --text: #1c1f26;
+  --border: #e0e0e0;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(28,31,38,0.97); backdrop-filter: blur(10px);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5%; height: 68px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.nav-logo-mark {
+  width: 40px; height: 40px; background: var(--white); border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.nav-logo-mark svg { width: 32px; height: 32px; }
+.nav-logo-text { line-height: 1; }
+.nav-logo-name { font-family: 'Barlow Condensed', sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--white); letter-spacing: 1px; text-transform: uppercase; }
+.nav-logo-sub { font-size: 0.65rem; color: rgba(255,255,255,0.5); letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500; margin-top: 1px; }
+.nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+.nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-weight: 500; font-size: 0.88rem; letter-spacing: 0.3px; transition: color 0.2s; }
+.nav-links a:hover { color: var(--accent); }
+.nav-cta { background: var(--accent) !important; color: var(--slate) !important; padding: 9px 20px; border-radius: 4px; font-weight: 700 !important; transition: background 0.2s !important; }
+.nav-cta:hover { background: var(--accent-dark) !important; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh; background: var(--slate);
+  display: flex; align-items: stretch; position: relative; overflow: hidden;
+  padding-top: 68px;
+}
+.hero-left {
+  flex: 1; display: flex; flex-direction: column; justify-content: center;
+  padding: 60px 5% 60px 5%; position: relative; z-index: 2;
+  max-width: 560px;
+}
+.hero-right {
+  flex: 1.1; position: relative; overflow: hidden; min-height: 500px;
+  display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;
+  gap: 3px;
+}
+.hero-mosaic-img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  filter: brightness(0.82); transition: filter 0.3s;
+}
+.hero-mosaic-img:hover { filter: brightness(1); }
+.hero-right-img {
+  display: none;
+}
+.hero-right-overlay {
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: linear-gradient(to right, var(--slate) 0%, transparent 25%);
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 20px;
+}
+.hero-eyebrow::before { content: ''; display: block; width: 24px; height: 2px; background: var(--accent); }
+.hero h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(3.2rem, 7vw, 5.8rem); font-weight: 900;
+  line-height: 0.92; color: var(--white); letter-spacing: 1px;
+  text-transform: uppercase; margin-bottom: 24px;
+}
+.hero h1 span { color: var(--accent); display: block; }
+.hero-desc {
+  font-size: 1rem; color: rgba(255,255,255,0.7); line-height: 1.75;
+  margin-bottom: 36px; max-width: 420px;
+}
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 48px; }
+.btn-primary {
+  background: var(--accent); color: var(--slate); padding: 14px 28px;
+  border-radius: 4px; font-family: 'Inter', sans-serif; font-weight: 700;
+  font-size: 0.95rem; text-decoration: none; border: none; cursor: pointer;
+  transition: background 0.2s, transform 0.15s; display: inline-block; letter-spacing: 0.3px;
+}
+.btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); }
+.btn-ghost {
+  background: transparent; color: var(--white); padding: 14px 28px;
+  border-radius: 4px; font-family: 'Inter', sans-serif; font-weight: 600;
+  font-size: 0.95rem; text-decoration: none;
+  border: 1.5px solid rgba(255,255,255,0.3); display: inline-block;
+  transition: border-color 0.2s, transform 0.15s;
+}
+.btn-ghost:hover { border-color: var(--white); transform: translateY(-2px); }
+.hero-contacts { display: flex; flex-direction: column; gap: 12px; }
+.hero-contact-item {
+  display: flex; align-items: center; gap: 12px;
+  text-decoration: none; color: rgba(255,255,255,0.8);
+  font-weight: 600; font-size: 0.95rem; transition: color 0.2s;
+}
+.hero-contact-item:hover { color: var(--accent); }
+.hero-contact-dot {
+  width: 8px; height: 8px; background: var(--accent);
+  border-radius: 50%; flex-shrink: 0;
+}
+.hero-contact-label { font-size: 0.7rem; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1px; font-weight: 500; }
+
+/* contact panel on right side of hero */
+.hero-panel {
+  position: absolute; bottom: 0; right: 0; z-index: 10;
+  background: rgba(28,31,38,0.92); backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255,255,255,0.1);
+  border-left: 1px solid rgba(255,255,255,0.1);
+  padding: 28px 32px; min-width: 300px;
+  border-radius: 2px 0 0 0;
+}
+.hero-panel-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 16px;
+}
+.hero-panel-contacts { display: flex; flex-direction: column; gap: 14px; }
+.hero-panel-contact {
+  display: flex; align-items: center; gap: 12px;
+  text-decoration: none; color: var(--white); font-weight: 600;
+  font-size: 1rem; transition: color 0.2s;
+}
+.hero-panel-contact:hover { color: var(--accent); }
+.hero-panel-icon {
+  width: 34px; height: 34px; background: var(--accent);
+  border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.hero-panel-icon svg { width: 15px; height: 15px; fill: var(--slate); }
+.hero-panel-sublabel { font-size: 0.7rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.8px; }
+.hero-panel-quote {
+  display: block; margin-top: 14px; background: var(--accent); color: var(--slate);
+  text-align: center; padding: 11px; border-radius: 4px; font-weight: 700;
+  font-size: 0.9rem; text-decoration: none; transition: background 0.2s;
+  letter-spacing: 0.5px;
+}
+.hero-panel-quote:hover { background: var(--accent-dark); }
+
+/* ── CONTACT STRIP ── */
+.contact-strip {
+  background: var(--accent); padding: 14px 5%;
+  display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap;
+}
+.contact-strip a {
+  color: var(--slate); text-decoration: none; font-weight: 700; font-size: 0.95rem;
+  display: flex; align-items: center; gap: 9px; transition: opacity 0.2s;
+}
+.contact-strip a:hover { opacity: 0.8; }
+.contact-strip svg { width: 18px; height: 18px; fill: var(--slate); flex-shrink: 0; }
+.strip-div { width: 1px; height: 20px; background: rgba(28,31,38,0.2); }
+
+/* ── SECTIONS ── */
+section { padding: 90px 5%; }
+.section-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+.section-eyebrow::before { content: ''; display: block; width: 20px; height: 2px; background: var(--accent); }
+.section-title { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; color: var(--slate); letter-spacing: 0.5px; text-transform: uppercase; line-height: 1; margin-bottom: 14px; }
+.section-title-light { color: var(--white); }
+.section-sub { color: var(--grey); font-size: 1rem; line-height: 1.75; max-width: 520px; }
+
+/* ── SERVICES ── */
+#services { background: var(--grey-pale); }
+.services-head { text-align: center; margin-bottom: 56px; }
+.services-head .section-eyebrow { justify-content: center; }
+.services-head .section-eyebrow::before { display: none; }
+.services-head .section-sub { margin: 0 auto; }
+.services-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 2px; max-width: 1200px; margin: 0 auto;
+  border: 2px solid var(--border); border-radius: 8px; overflow: hidden;
+  background: var(--border);
+}
+.service-card {
+  background: var(--white); padding: 32px 28px;
+  position: relative; overflow: hidden; transition: background 0.25s;
+  cursor: default;
+}
+.service-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 0; height: 3px; background: var(--accent); transition: width 0.3s;
+}
+.service-card:hover { background: var(--grey-pale); }
+.service-card:hover::after { width: 100%; }
+.service-num {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 3rem; font-weight: 900;
+  color: var(--grey-light); line-height: 1; margin-bottom: 12px;
+  user-select: none;
+}
+.service-icon-wrap {
+  width: 44px; height: 44px; background: var(--slate); border-radius: 6px;
+  display: flex; align-items: center; justify-content: center; margin-bottom: 14px;
+}
+.service-icon-wrap svg { width: 22px; height: 22px; fill: var(--accent); }
+.service-card h3 {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 1.35rem; font-weight: 800;
+  color: var(--slate); letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 8px;
+}
+.service-card p { color: var(--grey); font-size: 0.9rem; line-height: 1.65; }
+
+/* ── GALLERY CAROUSEL ── */
+#gallery { background: var(--slate); padding: 90px 0; }
+.gallery-head { padding: 0 5%; margin-bottom: 40px; }
+.gallery-head .section-eyebrow { color: var(--accent); }
+.gallery-head .section-title { color: var(--white); }
+
+.carousel-nav {
+  padding: 0 5%; margin-bottom: 24px;
+  display: flex; gap: 8px; flex-wrap: wrap;
+}
+.carousel-tab {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+  font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 8px 18px; border-radius: 3px; border: 1.5px solid rgba(255,255,255,0.2);
+  background: transparent; color: rgba(255,255,255,0.6); cursor: pointer;
+  transition: all 0.2s;
+}
+.carousel-tab:hover { border-color: var(--accent); color: var(--accent); }
+.carousel-tab.active { background: var(--accent); border-color: var(--accent); color: var(--slate); }
+
+.carousel-track-wrap { overflow: hidden; position: relative; }
+.carousel-panel { display: none; }
+.carousel-panel.active { display: block; }
+
+.carousel-inner {
+  display: flex; gap: 12px; padding: 0 5%;
+  overflow-x: auto; scroll-behavior: smooth; scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.carousel-inner::-webkit-scrollbar { display: none; }
+
+.carousel-slide {
+  flex-shrink: 0; width: clamp(260px, 35vw, 420px);
+  scroll-snap-align: start; border-radius: 6px; overflow: hidden;
+  background: var(--slate-mid);
+}
+.carousel-slide img {
+  width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;
+  transition: transform 0.4s;
+}
+.carousel-slide:hover img { transform: scale(1.04); }
+.carousel-slide-label {
+  padding: 14px 16px;
+  font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,0.6);
+  letter-spacing: 0.5px;
+}
+
+.carousel-arrows {
+  display: flex; gap: 8px; padding: 16px 5% 0;
+}
+.carousel-btn {
+  width: 40px; height: 40px; border-radius: 4px;
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+  color: white; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s, border-color 0.2s; font-size: 1.1rem;
+}
+.carousel-btn:hover { background: var(--accent); border-color: var(--accent); color: var(--slate); }
+
+/* ── WHY ── */
+#why { background: var(--white); }
+.why-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.why-list { list-style: none; margin-top: 32px; display: flex; flex-direction: column; gap: 0; }
+.why-item {
+  display: flex; align-items: flex-start; gap: 16px; padding: 20px 0;
+  border-bottom: 1px solid var(--grey-light);
+}
+.why-item:first-child { border-top: 1px solid var(--grey-light); }
+.why-num {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 900;
+  color: var(--grey-light); flex-shrink: 0; width: 32px; line-height: 1.4;
+}
+.why-text strong { display: block; font-weight: 700; color: var(--slate); font-size: 0.95rem; margin-bottom: 3px; }
+.why-text span { font-size: 0.88rem; color: var(--grey); line-height: 1.6; }
+.why-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.why-stat {
+  background: var(--grey-pale); border-radius: 8px; padding: 28px 20px;
+  text-align: center; border: 1px solid var(--border);
+  transition: border-color 0.2s, transform 0.2s;
+}
+.why-stat:hover { border-color: var(--accent); transform: translateY(-3px); }
+.why-stat-num {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 2.8rem; font-weight: 900;
+  color: var(--slate); line-height: 1;
+}
+.why-stat-num span { color: var(--accent); }
+.why-stat-label { font-size: 0.8rem; color: var(--grey); font-weight: 600; margin-top: 6px; line-height: 1.4; text-transform: uppercase; letter-spacing: 0.5px; }
+
+/* ── TESTIMONIALS ── */
+#testimonials { background: var(--grey-pale); }
+.test-head { text-align: center; margin-bottom: 52px; }
+.test-head .section-eyebrow { justify-content: center; }
+.test-head .section-eyebrow::before { display: none; }
+.test-head .section-sub { margin: 0 auto; }
+.test-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto; }
+.test-card {
+  background: var(--white); border-radius: 8px; padding: 32px 28px;
+  border: 1px solid var(--border); position: relative; transition: transform 0.2s, box-shadow 0.2s;
+}
+.test-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+.test-stars { display: flex; gap: 3px; margin-bottom: 16px; }
+.test-stars svg { width: 16px; height: 16px; fill: var(--accent); }
+.test-quote {
+  font-size: 0.97rem; line-height: 1.75; color: var(--text); margin-bottom: 22px;
+  padding-left: 16px; border-left: 3px solid var(--accent);
+}
+.test-author { display: flex; align-items: center; gap: 12px; }
+.test-avatar {
+  width: 40px; height: 40px; background: var(--slate); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--white);
+  flex-shrink: 0;
+}
+.test-name { font-weight: 700; font-size: 0.9rem; color: var(--slate); }
+.test-location { font-size: 0.8rem; color: var(--grey); margin-top: 2px; }
+
+/* ── TEAM ── */
+#team { background: var(--slate); }
+.team-inner { max-width: 860px; margin: 0 auto; text-align: center; }
+.team-inner .section-sub { margin: 0 auto 48px; color: rgba(255,255,255,0.6); }
+.team-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.team-card {
+  background: var(--slate-mid); border-radius: 8px; padding: 40px 28px;
+  border: 1px solid rgba(255,255,255,0.08); transition: transform 0.2s, border-color 0.2s;
+  position: relative; overflow: hidden;
+}
+.team-card:hover { transform: translateY(-4px); border-color: rgba(200,169,110,0.4); }
+.team-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--accent);
+}
+.team-avatar {
+  width: 68px; height: 68px; background: var(--accent); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 900;
+  color: var(--slate); margin: 0 auto 18px;
+}
+.team-card h3 {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 900;
+  color: var(--white); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px;
+}
+.team-role { font-size: 0.75rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; margin-bottom: 20px; }
+.team-phone {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--accent); color: var(--slate); padding: 10px 20px;
+  border-radius: 4px; font-weight: 700; font-size: 0.95rem; text-decoration: none;
+  transition: background 0.2s;
+}
+.team-phone:hover { background: var(--accent-dark); }
+.team-phone svg { width: 14px; height: 14px; fill: var(--slate); }
+
+/* ── CONTACT ── */
+#contact { background: var(--white); }
+.contact-inner { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.3fr; gap: 64px; align-items: start; }
+.contact-detail { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 18px; }
+.contact-detail-icon { width: 40px; height: 40px; background: var(--slate); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.contact-detail-icon svg { width: 16px; height: 16px; fill: var(--accent); }
+.contact-detail-body strong { display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--grey); margin-bottom: 3px; font-weight: 600; }
+.contact-detail-body a, .contact-detail-body span { font-size: 0.97rem; font-weight: 700; color: var(--slate); text-decoration: none; }
+.contact-detail-body a:hover { color: var(--accent); }
+.contact-form-wrap {
+  background: var(--grey-pale); border-radius: 10px; padding: 40px 36px;
+  border: 1px solid var(--border);
+}
+.contact-form-wrap h3 {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 1.6rem; font-weight: 900;
+  color: var(--slate); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 26px;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-group { margin-bottom: 16px; display: flex; flex-direction: column; gap: 5px; }
+.form-group label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.8px; color: var(--slate); text-transform: uppercase; }
+.form-group input, .form-group select, .form-group textarea {
+  padding: 11px 13px; border: 1.5px solid var(--border); border-radius: 5px;
+  font-family: 'Inter', sans-serif; font-size: 0.92rem; color: var(--text);
+  background: var(--white); outline: none; transition: border-color 0.2s;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--accent); }
+.form-group textarea { resize: vertical; min-height: 108px; }
+.form-submit {
+  background: var(--slate); color: var(--white); padding: 13px 28px;
+  border: none; border-radius: 5px; font-family: 'Inter', sans-serif;
+  font-weight: 700; font-size: 0.95rem; cursor: pointer; width: 100%;
+  transition: background 0.2s; letter-spacing: 0.3px;
+}
+.form-submit:hover { background: var(--accent); color: var(--slate); }
+.form-note { text-align: center; font-size: 0.8rem; color: var(--grey); margin-top: 10px; }
+.form-success { display: none; text-align: center; padding: 30px; }
+.form-success h4 { font-family: 'Barlow Condensed', sans-serif; font-size: 1.8rem; color: var(--slate); text-transform: uppercase; margin-bottom: 8px; }
+
+/* ── FOOTER ── */
+footer { background: var(--slate-mid); color: rgba(255,255,255,0.55); padding: 48px 5% 28px; border-top: 1px solid rgba(255,255,255,0.06); }
+.footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; padding-bottom: 36px; border-bottom: 1px solid rgba(255,255,255,0.08); flex-wrap: wrap; }
+.footer-brand-name { font-family: 'Barlow Condensed', sans-serif; font-size: 1.6rem; font-weight: 900; color: var(--white); letter-spacing: 1px; text-transform: uppercase; }
+.footer-brand-name span { color: var(--accent); }
+.footer-brand p { margin-top: 10px; font-size: 0.88rem; line-height: 1.6; max-width: 240px; }
+.footer-links h4 { font-family: 'Barlow Condensed', sans-serif; font-size: 0.9rem; font-weight: 700; letter-spacing: 2px; color: var(--accent); text-transform: uppercase; margin-bottom: 14px; }
+.footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.footer-links a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+.footer-links a:hover { color: var(--accent); }
+.footer-bottom { padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; font-size: 0.8rem; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1050px) {
+  .hero { flex-direction: column; }
+  .hero-left { max-width: 100%; padding-bottom: 40px; }
+  .hero-right { min-height: 340px; width: 100%; flex: none; }
+  .hero-panel { position: relative; border: none; border-top: 1px solid rgba(255,255,255,0.1); }
+  .why-inner { grid-template-columns: 1fr; gap: 50px; }
+  .contact-inner { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 720px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .nav-links.open { display: flex; flex-direction: column; position: fixed; top: 68px; left: 0; right: 0; background: var(--slate); padding: 20px 5%; gap: 16px; z-index: 99; border-top: 1px solid rgba(255,255,255,0.08); }
+  .contact-strip { gap: 14px; }
+  .strip-div { display: none; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .team-cards { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
+  .form-row { grid-template-columns: 1fr; }
+  .contact-form-wrap { padding: 26px 18px; }
+  .footer-top { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">
+      <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="80" height="80" fill="#1c1f26" rx="2"/>
+        <!-- Hand/building icon approximation of WJH logo style -->
+        <text x="6" y="52" font-family="Arial Black, sans-serif" font-size="32" font-weight="900" fill="white" letter-spacing="2">WJH</text>
+        <text x="8" y="68" font-family="Arial, sans-serif" font-size="8" fill="#c8a96e" letter-spacing="1">BUILDING</text>
+      </svg>
+    </div>
+    <div class="nav-logo-text">
+      <div class="nav-logo-name">WJH Building &amp; Maintenance</div>
+      <div class="nav-logo-sub">Staffordshire &amp; Cheshire</div>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Our Work</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact" class="nav-cta">Free Quote</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <div class="hero-eyebrow">WJH Building &amp; Maintenance</div>
+    <h1>Built Right.<span>Every Time.</span></h1>
+    <p class="hero-desc">From full extensions and kitchen installs to roofing, fencing and landscaping — WJH Building and Maintenance delivers quality craftsmanship with over 60 combined years of experience. No job too big or small.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Get a Free Quote</a>
+      <a href="#gallery" class="btn-ghost">View Our Work</a>
+    </div>
+    <div class="hero-contacts">
+      <div>
+        <div class="hero-contact-label">Call Simon &amp; Will</div>
+      </div>
+      <a href="tel:07494074727" class="hero-contact-item">
+        <div class="hero-contact-dot"></div>
+        07494 074727
+      </a>
+      <a href="mailto:WJHbuilding@outlook.com" class="hero-contact-item">
+        <div class="hero-contact-dot"></div>
+        WJHbuilding@outlook.com
+      </a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img class="hero-mosaic-img" src="kitchen1.jpg" alt="Modern kitchen installation">
+    <img class="hero-mosaic-img" src="bathroom1.jpg" alt="Marble bathroom renovation">
+    <img class="hero-mosaic-img" src="garden5.jpg" alt="Full landscaped garden">
+    <img class="hero-mosaic-img" src="gate2.jpg" alt="Bespoke timber gate">
+    <div class="hero-right-overlay"></div>
+    <div class="hero-panel">
+      <div class="hero-panel-title">Get In Touch</div>
+      <div class="hero-panel-contacts">
+        <a href="tel:07494074727" class="hero-panel-contact">
+          <div class="hero-panel-icon"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg></div>
+          <div><div class="hero-panel-sublabel">Simon &amp; Will</div>07494 074727</div>
+        </a>
+        <a href="mailto:WJHbuilding@outlook.com" class="hero-panel-contact">
+          <div class="hero-panel-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
+          <div><div class="hero-panel-sublabel">Email Us</div>WJHbuilding@outlook.com</div>
+        </a>
+        <a href="#contact" class="hero-panel-quote">Request a Free Quote &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT STRIP -->
+<div class="contact-strip">
+  <a href="tel:07494074727">
+    <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+    07494 074727
+  </a>
+  <div class="strip-div"></div>
+  <a href="mailto:WJHbuilding@outlook.com">
+    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+    WJHbuilding@outlook.com
+  </a>
+  <div class="strip-div"></div>
+  <a href="https://www.instagram.com/wjh.building.and.maintenance1" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+    Follow on Instagram
+  </a>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-head">
+    <div class="section-eyebrow">What We Do</div>
+    <div class="section-title">Our Services</div>
+    <p class="section-sub">Full building and maintenance across Stoke-on-Trent, Staffordshire and Cheshire. Multi-trade, fully experienced, no job too big or small.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon-wrap"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div>
+      <h3>Extensions &amp; New Builds</h3>
+      <p>Single and double storey extensions, garden rooms and outbuildings built to the highest standard from groundworks to final finish.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon-wrap"><svg viewBox="0 0 24 24"><path d="M18 4H6C4.9 4 4 4.9 4 6v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H7v-2h6v2zm4-4H7v-2h10v2zm0-4H7V8h10v2z"/></svg></div>
+      <h3>Kitchens</h3>
+      <p>Full kitchen design and installation including electrics, plumbing, tiling, plastering and fitting. Transforming kitchens from start to finish.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon-wrap"><svg viewBox="0 0 24 24"><path d="M7 5h10v2h2V3c0-1.1-.9-2-2-2H7C5.9 1 5 1.9 5 3v4h2V5zm8.41 11.59L20 12l-4.59-4.59L14 8.83 17.17 12 14 15.17l1.41 1.42zM10 15.17L6.83 12 10 8.83 8.59 7.41 4 12l4.59 4.59L10 15.17zM17 19H7v-2H5v4c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2v-4h-2v2z"/></svg></div>
+      <h3>Bathrooms</h3>
+      <p>Complete bathroom renovations including tiling, plumbing, plastering and fitting. Modern, stylish results delivered on time.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon-wrap"><svg viewBox="0 0 24 24"><path d="M12 3L2 12h3v9h6v-5h2v5h6v-9h3L12 3zm0 12.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg></div>
+      <h3>Roofing</h3>
+      <p>Slate and tile roofing, flat roofs, soffits, fascias, guttering and drainage. Full roof replacements and repairs across Staffordshire.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon-wrap"><svg viewBox="0 0 24 24"><path d="M21 6.5l-4-4-8.5 8.5-2 4 4-2L21 6.5zm-14 7l-2 1 1-2 1 1zm2-6l1 1-7 7-1-1 7-7z"/></svg></div>
+      <h3>Plastering</h3>
+      <p>Skimming, rendering and full plastering for new builds, renovations and repairs. Smooth, lasting finishes throughout.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon-wrap"><svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg></div>
+      <h3>Fencing &amp; Gates</h3>
+      <p>Bespoke wooden fencing, side gates and boundary solutions. Built to last with a quality finish tailored to your property.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon-wrap"><svg viewBox="0 0 24 24"><path d="M17 8C8 10 5.9 16.17 3.82 21H5.5c.95-2.56 2.05-5 4-6.5C13 12 15 10.08 17 8zm4 0c-5.47 0-10.29 2.69-13.04 6.79C7.1 16.77 6.06 19.31 5.5 22H8c3.2-7.33 9.22-12 16-12V8z"/></svg></div>
+      <h3>Landscaping &amp; Gardens</h3>
+      <p>Patios, driveways, lawns, garden buildings and full landscaping. Creating beautiful outdoor spaces from concept to completion.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon-wrap"><svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg></div>
+      <h3>Windows, Gutters &amp; Soffits</h3>
+      <p>Roof window installation, tile and slate repairs, replacement guttering and soffit work. Keeping your property weathertight and looking its best from top to bottom.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="gallery-head">
+    <div class="section-eyebrow">Our Work</div>
+    <div class="section-title" style="color:white">Browse By Category</div>
+  </div>
+
+  <div class="carousel-nav">
+    <button class="carousel-tab active" data-panel="gardens">Gardens &amp; Buildings</button>
+    <button class="carousel-tab" data-panel="gates">Fencing &amp; Gates</button>
+    <button class="carousel-tab" data-panel="kitchens">Kitchens</button>
+    <button class="carousel-tab" data-panel="bathrooms">Bathrooms</button>
+    <button class="carousel-tab" data-panel="plastering">Plastering</button>
+    <button class="carousel-tab" data-panel="roofing">Roofing</button>
+  </div>
+
+  <div class="carousel-track-wrap">
+    <!-- Gardens & Buildings -->
+    <div class="carousel-panel active" id="panel-gardens">
+      <div class="carousel-inner" id="track-gardens">
+        <div class="carousel-slide"><img src="garden1.jpg" alt="Completed garden room at dusk"><div class="carousel-slide-label">Garden Room — Completed</div></div>
+        <div class="carousel-slide"><img src="garden2.jpg" alt="Garden room under construction"><div class="carousel-slide-label">Garden Room — In Progress</div></div>
+        <div class="carousel-slide"><img src="garden3.jpg" alt="Garden building build phase"><div class="carousel-slide-label">Garden Building — Block Work</div></div>
+        <div class="carousel-slide"><img src="garden4.jpg" alt="Extension frame at sunset"><div class="carousel-slide-label">Extension Frame — Sunset</div></div>
+        <div class="carousel-slide"><img src="garden5.jpg" alt="Completed landscaped garden"><div class="carousel-slide-label">Full Landscaping — Completed</div></div>
+      </div>
+    </div>
+    <!-- Fencing & Gates -->
+    <div class="carousel-panel" id="panel-gates">
+      <div class="carousel-inner" id="track-gates">
+        <div class="carousel-slide"><img src="gate1.jpg" alt="Painted timber gate"><div class="carousel-slide-label">Painted Timber Gate</div></div>
+        <div class="carousel-slide"><img src="gate2.jpg" alt="Framed garden gate"><div class="carousel-slide-label">Framed Garden Gate</div></div>
+        <div class="carousel-slide"><img src="gate3.jpg" alt="Side access gate"><div class="carousel-slide-label">Side Access Gate</div></div>
+        <div class="carousel-slide"><img src="fence1.jpg" alt="Close board timber fencing"><div class="carousel-slide-label">Close Board Fencing</div></div>
+      </div>
+    </div>
+    <!-- Kitchens -->
+    <div class="carousel-panel" id="panel-kitchens">
+      <div class="carousel-inner" id="track-kitchens">
+        <div class="carousel-slide"><img src="kitchen1.jpg" alt="Modern kitchen with island"><div class="carousel-slide-label">Modern Kitchen — Island Unit</div></div>
+        <div class="carousel-slide"><img src="kitchen2.jpg" alt="Dark blue fitted kitchen"><div class="carousel-slide-label">Dark Blue Fitted Kitchen</div></div>
+      </div>
+    </div>
+    <!-- Bathrooms -->
+    <div class="carousel-panel" id="panel-bathrooms">
+      <div class="carousel-inner" id="track-bathrooms">
+        <div class="carousel-slide"><img src="bathroom1.jpg" alt="Marble tiled bathroom with shower"><div class="carousel-slide-label">Marble Tile Bathroom</div></div>
+        <div class="carousel-slide"><img src="bathroom2.jpg" alt="Navy and marble bathroom"><div class="carousel-slide-label">Navy &amp; Marble Bathroom</div></div>
+        <div class="carousel-slide"><img src="bathroom3.jpg" alt="Full bathroom renovation"><div class="carousel-slide-label">Full Bathroom Renovation</div></div>
+      </div>
+    </div>
+    <!-- Plastering -->
+    <div class="carousel-panel" id="panel-plastering">
+      <div class="carousel-inner" id="track-plastering">
+        <div class="carousel-slide"><img src="plaster1.jpg" alt="Fresh skim plaster room"><div class="carousel-slide-label">Full Room Skim</div></div>
+        <div class="carousel-slide"><img src="plaster2.jpg" alt="Plastered hallway and door"><div class="carousel-slide-label">Hallway Plaster</div></div>
+      </div>
+    </div>
+    <!-- Roofing -->
+    <div class="carousel-panel" id="panel-roofing">
+      <div class="carousel-inner" id="track-roofing">
+        <div class="carousel-slide"><img src="roof1.jpg" alt="Flat roof installation"><div class="carousel-slide-label">Flat Roof — GRP Finish</div></div>
+        <div class="carousel-slide"><img src="roof2.jpg" alt="New slate roof"><div class="carousel-slide-label">Slate Roof — Full Replacement</div></div>
+        <div class="carousel-slide"><img src="roof3.jpg" alt="Slate roof from scaffold"><div class="carousel-slide-label">Slate Roof — Scaffold View</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="carousel-arrows" id="carouselArrows">
+    <button class="carousel-btn" id="prevBtn" aria-label="Previous">&#8592;</button>
+    <button class="carousel-btn" id="nextBtn" aria-label="Next">&#8594;</button>
+  </div>
+</section>
+
+<!-- WHY US -->
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+
+  <div class="test-head">
+    <div class="section-eyebrow">Reviews</div>
+    <div class="section-title">What Customers Say</div>
+    <p class="section-sub">Placeholder reviews — we'll add real Google reviews here once the profile is live.</p>
+  </div>
+  <div class="test-grid">
+    <div class="test-card">
+      <div class="test-stars">
+        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+      </div>
+      <p class="test-quote">Simon and Will completely transformed our bathroom. The standard of work was exceptional — tiling, plastering and fitting all done to a very high level. Could not recommend them highly enough.</p>
+      <div class="test-author">
+        <div class="test-avatar">MH</div>
+        <div><div class="test-name">Mark H.</div><div class="test-location">Newcastle-under-Lyme</div></div>
+      </div>
+    </div>
+    <div class="test-card">
+      <div class="test-stars">
+        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+      </div>
+      <p class="test-quote">Had WJH build a garden room for us — from the initial quote through to the finished build, the whole process was smooth and professional. Turned out better than we imagined.</p>
+      <div class="test-author">
+        <div class="test-avatar">LT</div>
+        <div><div class="test-name">Lisa T.</div><div class="test-location">Stoke-on-Trent</div></div>
+      </div>
+    </div>
+    <div class="test-card">
+      <div class="test-stars">
+        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+      </div>
+      <p class="test-quote">Used WJH for full roof replacement and new guttering. Great price, turned up exactly when they said, and the finish was perfect. Neighbours have already asked for their number.</p>
+      <div class="test-author">
+        <div class="test-avatar">DC</div>
+        <div><div class="test-name">Dave C.</div><div class="test-location">Crewe, Cheshire</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div>
+      <div class="section-eyebrow">Get In Touch</div>
+      <div class="section-title">Free Quote, No Obligation</div>
+      <p class="section-sub" style="margin-bottom:32px">Fill in the form and Simon or Will will get back to you quickly with a no-obligation quote. Or call us directly.</p>
+      <div class="contact-detail">
+        <div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg></div>
+        <div class="contact-detail-body"><strong>Phone</strong><a href="tel:07494074727">07494 074727</a></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
+        <div class="contact-detail-body"><strong>Email</strong><a href="mailto:WJHbuilding@outlook.com">WJHbuilding@outlook.com</a></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
+        <div class="contact-detail-body"><strong>Address</strong><span>Unit 12, Brampton Sidings, ST5 0SR</span></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
+        <div class="contact-detail-body"><strong>Coverage</strong><span>Staffordshire &amp; Cheshire</span></div>
+      </div>
+    </div>
+    <div class="contact-form-wrap">
+      <h3>Request a Quote</h3>
+      <!-- Replace YOUR_FORM_ID with your Formspree ID from formspree.io -->
+      <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">Full Name</label>
+            <input type="text" id="fname" name="name" placeholder="John Smith" required>
+          </div>
+          <div class="form-group">
+            <label for="fphone">Phone Number</label>
+            <input type="tel" id="fphone" name="phone" placeholder="07700 900000" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="femail">Email Address</label>
+          <input type="email" id="femail" name="email" placeholder="you@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="fservice">Service Required</label>
+          <select id="fservice" name="service" required>
+            <option value="" disabled selected>Select a service...</option>
+            <option>Extension or New Build</option>
+            <option>Kitchen</option>
+            <option>Bathroom</option>
+            <option>Roofing</option>
+            <option>Plastering</option>
+            <option>Fencing or Gates</option>
+            <option>Landscaping or Garden</option>
+            <option>Windows, Gutters &amp; Soffits</option>
+            <option>General Maintenance</option>
+            <option>Other / Not Sure</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="fmessage">Tell Us About Your Project</label>
+          <textarea id="fmessage" name="message" placeholder="Describe the job, approximate timescale, location, any other details..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send Quote Request &rarr;</button>
+        <p class="form-note">We aim to respond within a few hours.</p>
+      </form>
+      <div class="form-success" id="formSuccess">
+        <h4>Message Sent!</h4>
+        <p style="color:var(--grey)">Thanks for getting in touch. Simon or Will will be back to you shortly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-brand-name">WJH <span>Building</span></div>
+      <p>Trusted building and maintenance across Staffordshire and Cheshire. Call Simon or Will for a free, no-obligation quote.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Extensions &amp; New Builds</a></li>
+        <li><a href="#services">Kitchens &amp; Bathrooms</a></li>
+        <li><a href="#services">Roofing</a></li>
+        <li><a href="#services">Plastering</a></li>
+        <li><a href="#services">Fencing &amp; Gates</a></li>
+        <li><a href="#services">Landscaping</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:07494074727">07494 074727</a></li>
+        <li><a href="mailto:WJHbuilding@outlook.com">WJHbuilding@outlook.com</a></li>
+        <li><span style="color:rgba(255,255,255,0.55);font-size:0.88rem">Unit 12, Brampton Sidings, ST5 0SR</span></li>
+        <li><a href="https://www.instagram.com/wjh.building.and.maintenance1" target="_blank">Instagram</a></li>
+        <li><a href="#contact">Get a Free Quote</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>2025 WJH Building and Maintenance. All rights reserved.</span>
+    <span>wjhbuildingandmaintenance.co.uk</span>
+  </div>
+</footer>
+
+<script>
+// Mobile nav
+var hamburger = document.getElementById('hamburger');
+var navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', function() { navLinks.classList.toggle('open'); });
+navLinks.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', function() { navLinks.classList.remove('open'); }); });
+
+// Carousel tabs
+var tabs = document.querySelectorAll('.carousel-tab');
+var panels = document.querySelectorAll('.carousel-panel');
+tabs.forEach(function(tab) {
+  tab.addEventListener('click', function() {
+    tabs.forEach(function(t) { t.classList.remove('active'); });
+    panels.forEach(function(p) { p.classList.remove('active'); });
+    tab.classList.add('active');
+    var panelId = 'panel-' + tab.getAttribute('data-panel');
+    document.getElementById(panelId).classList.add('active');
+  });
+});
+
+// Carousel arrows
+function getActiveTrack() {
+  var activePanel = document.querySelector('.carousel-panel.active');
+  return activePanel ? activePanel.querySelector('.carousel-inner') : null;
+}
+document.getElementById('prevBtn').addEventListener('click', function() {
+  var track = getActiveTrack();
+  if (track) track.scrollBy({ left: -320, behavior: 'smooth' });
+});
+document.getElementById('nextBtn').addEventListener('click', function() {
+  var track = getActiveTrack();
+  if (track) track.scrollBy({ left: 320, behavior: 'smooth' });
+});
+
+// Form
+var form = document.getElementById('contactForm');
+var success = document.getElementById('formSuccess');
+form.addEventListener('submit', function(e) {
+  var action = form.getAttribute('action');
+  if (action.indexOf('YOUR_FORM_ID') !== -1) {
+    e.preventDefault();
+    form.style.display = 'none';
+    success.style.display = 'block';
+    return;
+  }
+  e.preventDefault();
+  fetch(action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
+    .then(function(res) {
+      if (res.ok) { form.style.display = 'none'; success.style.display = 'block'; }
+      else { alert('Something went wrong. Please call us on 07494 074727.'); }
+    })
+    .catch(function() { alert('Something went wrong. Please call us on 07494 074727.'); });
+});
+</script>
+</body>
+</html>
