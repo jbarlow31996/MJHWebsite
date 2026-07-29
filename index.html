@@ -17,8 +17,8 @@
   --grey-light: #e5e7eb;
   --grey-pale: #f5f5f5;
   --white: #ffffff;
-  --accent: #c8a96e;
-  --accent-dark: #b8954d;
+  --accent: #a8b4c0;
+  --accent-dark: #8a9baa;
   --text: #1c1f26;
   --border: #e0e0e0;
 }
@@ -64,15 +64,20 @@ nav {
 }
 .hero-right {
   flex: 1.1; position: relative; overflow: hidden; min-height: 500px;
+  display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;
+  gap: 3px;
 }
+.hero-mosaic-img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  filter: brightness(0.82); transition: filter 0.3s;
+}
+.hero-mosaic-img:hover { filter: brightness(1); }
 .hero-right-img {
-  position: absolute; inset: 0;
-  background: url('garden1.jpg') center/cover no-repeat;
-  filter: brightness(0.7);
+  display: none;
 }
 .hero-right-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to right, var(--slate) 0%, transparent 40%);
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: linear-gradient(to right, var(--slate) 0%, transparent 25%);
 }
 .hero-eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
@@ -183,7 +188,7 @@ section { padding: 90px 5%; }
 .services-head .section-eyebrow::before { display: none; }
 .services-head .section-sub { margin: 0 auto; }
 .services-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  display: grid; grid-template-columns: repeat(4, 1fr);
   gap: 2px; max-width: 1200px; margin: 0 auto;
   border: 2px solid var(--border); border-radius: 8px; overflow: hidden;
   background: var(--border);
@@ -422,6 +427,7 @@ footer { background: var(--slate-mid); color: rgba(255,255,255,0.55); padding: 4
   .hero-panel { position: relative; border: none; border-top: 1px solid rgba(255,255,255,0.1); }
   .why-inner { grid-template-columns: 1fr; gap: 50px; }
   .contact-inner { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 720px) {
   .nav-links { display: none; }
@@ -429,6 +435,7 @@ footer { background: var(--slate-mid); color: rgba(255,255,255,0.55); padding: 4
   .nav-links.open { display: flex; flex-direction: column; position: fixed; top: 68px; left: 0; right: 0; background: var(--slate); padding: 20px 5%; gap: 16px; z-index: 99; border-top: 1px solid rgba(255,255,255,0.08); }
   .contact-strip { gap: 14px; }
   .strip-div { display: none; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
   .team-cards { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
   .form-row { grid-template-columns: 1fr; }
   .contact-form-wrap { padding: 26px 18px; }
@@ -443,10 +450,22 @@ footer { background: var(--slate-mid); color: rgba(255,255,255,0.55); padding: 4
   <a href="#" class="nav-logo">
     <div class="nav-logo-mark">
       <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="80" height="80" fill="#1c1f26" rx="2"/>
-        <!-- Hand/building icon approximation of WJH logo style -->
-        <text x="6" y="52" font-family="Arial Black, sans-serif" font-size="32" font-weight="900" fill="white" letter-spacing="2">WJH</text>
-        <text x="8" y="68" font-family="Arial, sans-serif" font-size="8" fill="#c8a96e" letter-spacing="1">BUILDING</text>
+        <!-- Navy background -->
+        <rect width="80" height="80" fill="#1c3a6b"/>
+        <!-- Outer double border -->
+        <rect x="3" y="3" width="74" height="74" stroke="white" stroke-width="1.2" fill="none"/>
+        <rect x="5.5" y="5.5" width="69" height="69" stroke="white" stroke-width="0.6" fill="none"/>
+        <!-- Hand icon -->
+        <path d="M40 8 C37 8 34 10 33 13 L29 22 C28 24 29 26 31 26 L33 26 L33 30 C33 31 34 32 35 32 L45 32 C46 32 47 31 47 30 L47 26 L49 26 C51 26 52 24 51 22 L47 13 C46 10 43 8 40 8Z" fill="white" opacity="0.9"/>
+        <!-- Buildings on hand -->
+        <rect x="34" y="14" width="5" height="10" fill="#1c3a6b"/>
+        <rect x="35" y="12" width="3" height="2" fill="#1c3a6b"/>
+        <rect x="41" y="16" width="4" height="8" fill="#1c3a6b"/>
+        <rect x="42" y="14" width="2" height="2" fill="#1c3a6b"/>
+        <!-- WJH text -->
+        <text x="8" y="56" font-family="Arial Black, sans-serif" font-size="26" font-weight="900" fill="white" letter-spacing="3">WJH</text>
+        <!-- Subtitle -->
+        <text x="9" y="68" font-family="Arial, sans-serif" font-size="5.5" fill="white" letter-spacing="1.5" opacity="0.85">BUILDING AND MAINTENANCE</text>
       </svg>
     </div>
     <div class="nav-logo-text">
@@ -490,7 +509,10 @@ footer { background: var(--slate-mid); color: rgba(255,255,255,0.55); padding: 4
     </div>
   </div>
   <div class="hero-right">
-    <div class="hero-right-img"></div>
+    <img class="hero-mosaic-img" src="e2f74339-93bd-44b0-9ed9-e3cd2c4d5952.jpg" alt="Modern kitchen installation">
+    <img class="hero-mosaic-img" src="dfe30195-ccbf-41f9-b8aa-4d592cc9f83b.jpg" alt="Marble bathroom renovation">
+    <img class="hero-mosaic-img" src="6b185489-7eab-47ba-b737-67afbd2d5528.jpg" alt="Full landscaped garden">
+    <img class="hero-mosaic-img" src="ef799569-f017-4f9c-bbc5-250381d768a4.jpg" alt="Bespoke timber gate">
     <div class="hero-right-overlay"></div>
     <div class="hero-panel">
       <div class="hero-panel-title">Get In Touch</div>
@@ -563,7 +585,7 @@ footer { background: var(--slate-mid); color: rgba(255,255,255,0.55); padding: 4
     <div class="service-card">
       <div class="service-icon-wrap"><svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg></div>
       <h3>Fencing &amp; Gates</h3>
-      <p>Bespoke wooden fencing, side gates and boundary solutions. Built to last with a quality finish tailored to your property.</p>
+      <p>Bespoke timber, uPVC and aluminium fencing, side gates and boundary solutions. Built to last with a quality finish tailored to your property.</p>
     </div>
     <div class="service-card">
       <div class="service-icon-wrap"><svg viewBox="0 0 24 24"><path d="M17 8C8 10 5.9 16.17 3.82 21H5.5c.95-2.56 2.05-5 4-6.5C13 12 15 10.08 17 8zm4 0c-5.47 0-10.29 2.69-13.04 6.79C7.1 16.77 6.06 19.31 5.5 22H8c3.2-7.33 9.22-12 16-12V8z"/></svg></div>
@@ -572,8 +594,13 @@ footer { background: var(--slate-mid); color: rgba(255,255,255,0.55); padding: 4
     </div>
     <div class="service-card">
       <div class="service-icon-wrap"><svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg></div>
-      <h3>Windows, Gutters &amp; Soffits</h3>
-      <p>Roof window installation, tile and slate repairs, replacement guttering and soffit work. Keeping your property weathertight and looking its best from top to bottom.</p>
+      <h3>Fascias, Gutters &amp; Soffits</h3>
+      <p>Replacement fascias, soffits and guttering in uPVC and aluminium. Weathertight, low maintenance finishes that protect your roofline and keep your property looking smart.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon-wrap"><svg viewBox="0 0 24 24"><path d="M3 5v14h18V5H3zm8 12H5v-2h6v2zm0-4H5v-2h6v2zm0-4H5V7h6v2zm8 8h-6v-2h6v2zm0-4h-6v-2h6v2zm0-4h-6V7h6v2z"/></svg></div>
+      <h3>Windows &amp; Roof Windows</h3>
+      <p>Supply and installation of uPVC and aluminium windows, including Velux and flat roof windows. Energy efficient, secure and built to last.</p>
     </div>
   </div>
 </section>
@@ -598,50 +625,50 @@ footer { background: var(--slate-mid); color: rgba(255,255,255,0.55); padding: 4
     <!-- Gardens & Buildings -->
     <div class="carousel-panel active" id="panel-gardens">
       <div class="carousel-inner" id="track-gardens">
-        <div class="carousel-slide"><img src="garden1.jpg" alt="Completed garden room at dusk"><div class="carousel-slide-label">Garden Room — Completed</div></div>
-        <div class="carousel-slide"><img src="garden2.jpg" alt="Garden room under construction"><div class="carousel-slide-label">Garden Room — In Progress</div></div>
-        <div class="carousel-slide"><img src="garden3.jpg" alt="Garden building build phase"><div class="carousel-slide-label">Garden Building — Block Work</div></div>
-        <div class="carousel-slide"><img src="garden4.jpg" alt="Extension frame at sunset"><div class="carousel-slide-label">Extension Frame — Sunset</div></div>
-        <div class="carousel-slide"><img src="garden5.jpg" alt="Completed landscaped garden"><div class="carousel-slide-label">Full Landscaping — Completed</div></div>
+        <div class="carousel-slide"><img src="89aff167-171b-46f0-a98a-91b28a4613ac.jpg" alt="Completed garden room at dusk"><div class="carousel-slide-label">Garden Room — Completed</div></div>
+        <div class="carousel-slide"><img src="bc72b2be-db2b-4e4d-8d0c-adf1e47ce080.jpg" alt="Garden room under construction"><div class="carousel-slide-label">Garden Room — In Progress</div></div>
+        <div class="carousel-slide"><img src="fd8f45a8-2563-4311-9883-25c55fbfa418.jpg" alt="Garden building build phase"><div class="carousel-slide-label">Garden Building — Block Work</div></div>
+        <div class="carousel-slide"><img src="45f7ddd5-166e-4f91-89b7-3d14daf057f4.jpg" alt="Extension frame at sunset"><div class="carousel-slide-label">Extension Frame — Sunset</div></div>
+        <div class="carousel-slide"><img src="6b185489-7eab-47ba-b737-67afbd2d5528.jpg" alt="Completed landscaped garden"><div class="carousel-slide-label">Full Landscaping — Completed</div></div>
       </div>
     </div>
     <!-- Fencing & Gates -->
     <div class="carousel-panel" id="panel-gates">
       <div class="carousel-inner" id="track-gates">
-        <div class="carousel-slide"><img src="gate1.jpg" alt="Painted timber gate"><div class="carousel-slide-label">Painted Timber Gate</div></div>
-        <div class="carousel-slide"><img src="gate2.jpg" alt="Framed garden gate"><div class="carousel-slide-label">Framed Garden Gate</div></div>
-        <div class="carousel-slide"><img src="gate3.jpg" alt="Side access gate"><div class="carousel-slide-label">Side Access Gate</div></div>
-        <div class="carousel-slide"><img src="fence1.jpg" alt="Close board timber fencing"><div class="carousel-slide-label">Close Board Fencing</div></div>
+        <div class="carousel-slide"><img src="62cecd6f-a9fc-450c-bd59-ac67c20132ae.jpg" alt="Painted timber gate"><div class="carousel-slide-label">Painted Timber Gate</div></div>
+        <div class="carousel-slide"><img src="ef799569-f017-4f9c-bbc5-250381d768a4.jpg" alt="Framed garden gate"><div class="carousel-slide-label">Framed Garden Gate</div></div>
+        <div class="carousel-slide"><img src="83bbf0c0-6ec5-4720-a8e2-85ba58d352aa.jpg" alt="Side access gate"><div class="carousel-slide-label">Side Access Gate</div></div>
+        <div class="carousel-slide"><img src="fef637e1-b8ec-41f3-b719-927049515583.jpg" alt="Close board timber fencing"><div class="carousel-slide-label">Close Board Fencing</div></div>
       </div>
     </div>
     <!-- Kitchens -->
     <div class="carousel-panel" id="panel-kitchens">
       <div class="carousel-inner" id="track-kitchens">
-        <div class="carousel-slide"><img src="kitchen1.jpg" alt="Modern kitchen with island"><div class="carousel-slide-label">Modern Kitchen — Island Unit</div></div>
-        <div class="carousel-slide"><img src="kitchen2.jpg" alt="Dark blue fitted kitchen"><div class="carousel-slide-label">Dark Blue Fitted Kitchen</div></div>
+        <div class="carousel-slide"><img src="e2f74339-93bd-44b0-9ed9-e3cd2c4d5952.jpg" alt="Modern kitchen with island"><div class="carousel-slide-label">Modern Kitchen — Island Unit</div></div>
+        <div class="carousel-slide"><img src="3a623a8d-72ee-466f-a013-0b55551aae32.jpg" alt="Dark blue fitted kitchen"><div class="carousel-slide-label">Dark Blue Fitted Kitchen</div></div>
       </div>
     </div>
     <!-- Bathrooms -->
     <div class="carousel-panel" id="panel-bathrooms">
       <div class="carousel-inner" id="track-bathrooms">
-        <div class="carousel-slide"><img src="bathroom1.jpg" alt="Marble tiled bathroom with shower"><div class="carousel-slide-label">Marble Tile Bathroom</div></div>
-        <div class="carousel-slide"><img src="bathroom2.jpg" alt="Navy and marble bathroom"><div class="carousel-slide-label">Navy &amp; Marble Bathroom</div></div>
-        <div class="carousel-slide"><img src="bathroom3.jpg" alt="Full bathroom renovation"><div class="carousel-slide-label">Full Bathroom Renovation</div></div>
+        <div class="carousel-slide"><img src="dfe30195-ccbf-41f9-b8aa-4d592cc9f83b.jpg" alt="Marble tiled bathroom with shower"><div class="carousel-slide-label">Marble Tile Bathroom</div></div>
+        <div class="carousel-slide"><img src="14b87f35-5f01-4187-8208-dff7ad3c0426.jpg" alt="Navy and marble bathroom"><div class="carousel-slide-label">Navy &amp; Marble Bathroom</div></div>
+        <div class="carousel-slide"><img src="af537a96-42b2-4312-856b-946e19f8a170.jpg" alt="Full bathroom renovation"><div class="carousel-slide-label">Full Bathroom Renovation</div></div>
       </div>
     </div>
     <!-- Plastering -->
     <div class="carousel-panel" id="panel-plastering">
       <div class="carousel-inner" id="track-plastering">
-        <div class="carousel-slide"><img src="plaster1.jpg" alt="Fresh skim plaster room"><div class="carousel-slide-label">Full Room Skim</div></div>
-        <div class="carousel-slide"><img src="plaster2.jpg" alt="Plastered hallway and door"><div class="carousel-slide-label">Hallway Plaster</div></div>
+        <div class="carousel-slide"><img src="b6c8c8b0-812d-4c62-9f8c-bcb032f2775e.jpg" alt="Fresh skim plaster room"><div class="carousel-slide-label">Full Room Skim</div></div>
+        <div class="carousel-slide"><img src="90eef1aa-7fbd-4d9d-bfbc-f4457adc140d.jpg" alt="Plastered hallway and door"><div class="carousel-slide-label">Hallway Plaster</div></div>
       </div>
     </div>
     <!-- Roofing -->
     <div class="carousel-panel" id="panel-roofing">
       <div class="carousel-inner" id="track-roofing">
-        <div class="carousel-slide"><img src="roof1.jpg" alt="Flat roof installation"><div class="carousel-slide-label">Flat Roof — GRP Finish</div></div>
-        <div class="carousel-slide"><img src="roof2.jpg" alt="New slate roof"><div class="carousel-slide-label">Slate Roof — Full Replacement</div></div>
-        <div class="carousel-slide"><img src="roof3.jpg" alt="Slate roof from scaffold"><div class="carousel-slide-label">Slate Roof — Scaffold View</div></div>
+        <div class="carousel-slide"><img src="3f193bbf-ea0a-4e48-b9e0-4d23dc04473b.jpg" alt="Flat roof installation"><div class="carousel-slide-label">Flat Roof — GRP Finish</div></div>
+        <div class="carousel-slide"><img src="dafa7f06-8eb2-4e89-ae5b-f1ce99610dcf.jpg" alt="New slate roof"><div class="carousel-slide-label">Slate Roof — Full Replacement</div></div>
+        <div class="carousel-slide"><img src="730f117f-6cf3-4121-8dcf-1e02cd339c06.jpg" alt="Slate roof from scaffold"><div class="carousel-slide-label">Slate Roof — Scaffold View</div></div>
       </div>
     </div>
   </div>
@@ -732,11 +759,19 @@ footer { background: var(--slate-mid); color: rgba(255,255,255,0.55); padding: 4
         <div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
         <div class="contact-detail-body"><strong>Coverage</strong><span>Staffordshire &amp; Cheshire</span></div>
       </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 4l5 2.18V11c0 3.5-2.33 6.79-5 7.93-2.67-1.14-5-4.43-5-7.93V7.18L12 5z"/></svg></div>
+        <div class="contact-detail-body"><strong>Fully Insured</strong><span>£10M public liability &amp; £5M employers liability</span></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg></div>
+        <div class="contact-detail-body"><strong>Payment</strong><span>Cash &amp; all major credit cards accepted (excl. Amex)</span></div>
+      </div>
     </div>
     <div class="contact-form-wrap">
       <h3>Request a Quote</h3>
-      <!-- Replace YOUR_FORM_ID with your Formspree ID from formspree.io -->
-      <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <!-- Replace mkodkgyn with your Formspree ID from formspree.io -->
+      <form id="contactForm" action="https://formspree.io/f/mkodkgyn" method="POST">
         <div class="form-row">
           <div class="form-group">
             <label for="fname">Full Name</label>
@@ -762,7 +797,8 @@ footer { background: var(--slate-mid); color: rgba(255,255,255,0.55); padding: 4
             <option>Plastering</option>
             <option>Fencing or Gates</option>
             <option>Landscaping or Garden</option>
-            <option>Windows, Gutters &amp; Soffits</option>
+            <option>Fascias, Gutters &amp; Soffits</option>
+            <option>Windows &amp; Roof Windows</option>
             <option>General Maintenance</option>
             <option>Other / Not Sure</option>
           </select>
@@ -797,6 +833,8 @@ footer { background: var(--slate-mid); color: rgba(255,255,255,0.55); padding: 4
         <li><a href="#services">Roofing</a></li>
         <li><a href="#services">Plastering</a></li>
         <li><a href="#services">Fencing &amp; Gates</a></li>
+        <li><a href="#services">Fascias, Gutters &amp; Soffits</a></li>
+        <li><a href="#services">Windows &amp; Roof Windows</a></li>
         <li><a href="#services">Landscaping</a></li>
       </ul>
     </div>
@@ -856,7 +894,7 @@ var form = document.getElementById('contactForm');
 var success = document.getElementById('formSuccess');
 form.addEventListener('submit', function(e) {
   var action = form.getAttribute('action');
-  if (action.indexOf('YOUR_FORM_ID') !== -1) {
+  if (action.indexOf('mkodkgyn') !== -1) {
     e.preventDefault();
     form.style.display = 'none';
     success.style.display = 'block';
